@@ -1,5 +1,5 @@
 
-# WeatherRadioSuite
+# BMH-Weather-Radio-Suite
 
 A faithful recreation of the National Weather Service's "Broadcast Message Handler" system for NOAA (National Oceanic and Atmospheric Administration) Weather Radio, in Python.
 
