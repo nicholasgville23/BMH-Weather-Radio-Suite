@@ -38,24 +38,24 @@ You can now continue with setup below.
 
 ## Observations
 
-Go through `config.example.json` and configure it to your liking, then save it as `config.json`. You can also use the built-in command line flag `--generate-config` to create a default config file (just copies the example for you), or `--interactively-configure` for a (somewhat) guided setup. I recommend spacing out your observation locations evenly. If you're unsure if a location has observations, try placing the location/airport code in https://api.weather.gov/stations/{airportCode}/observations/latest. For example, if I wanted the Kalamazoo/Battle Creek International Airport, I would put `KAZO` in {airportCode} in that link.
+Go through `config.example.json` and configure it to your liking, then save it as `config.json`. You can also use the built-in command line flag `--generate-config` to create a default config file (just copies the example for you), or `--interactively-configure` for a (somewhat) guided setup. I recommend spacing out your observation locations evenly. If you're unsure if a location has observations, try placing the location/airport code in https://api.weather.gov/stations/{airportCode}/observations/latest. For example, if I wanted the Valparaiso Airport, I would put `KVPZ` in {airportCode} in that link.
 
 Populate `mainObsCode` with your main observation. Then, for `regionalObsCodes`, place as many codes as you would like for the rest of your observations. Your `opener` list can include as many as you would like, you just have to make sure you have each number in `openerList` for each opener in `openers`. If you only want one, remove everything except #1 in both places.
 
-`cityNameDef` is where you can define each location. That way you're not locked in to what the API has the location as. `dividers` is where you can add a 'divider' before a specific location. For example, after my main observation plays, I have it say "Around our local area, Battle Creek..."
+`cityNameDef` is where you can define each location. That way you're not locked in to what the API has the location as. `dividers` is where you can add a 'divider' before a specific location. For example, after my main observation plays, I have it say "Around our local area, Valparaiso..."
 
 ## Forecast
 
 Here you can define how many forecast days you want in your forecast. Default is 14, this is odd because it's days and nights. Technically this can be as high as 15, however 14 is the safest as it's not always 15 segments.
-The zone is what you want the forecast to be. `MIZ072` is Kalamazoo Co., MI. The zone code is formatted as: State Abbreviation + Z + 3 digit county code. You can find your zone code by going to https://www.weather.gov/ and searching for your location. Once there, click on the "Forecast" link, and in the URL you will see something like "https://forecast.weather.gov/MapClick.php?zoneid=MIZ072". That is your zone code. `Pre/Post` are what come before and after your forecast. If you don't want one, the other, or both, just make them `""`.
+The zone is what you want the forecast to be. `INZ011` is Valparaiso, IN. The zone code is formatted as: State Abbreviation + Z + 3 digit county code. You can find your zone code by going to https://www.weather.gov/ and searching for your location. Once there, click on the "Forecast" link, and in the URL you will see something like "https://forecast.weather.gov/MapClick.php?zoneid=INZ011". That is your zone code. `Pre/Post` are what come before and after your forecast. If you don't want one, the other, or both, just make them `""`.
 
 ## HWO
 
-Set your office's code here. `KGRR` is Grand Rapids, MI. You can find your office code by going to https://www.weather.gov/ and searching for your location. Once there, click on the "About Us" link on the left side. In the URL you will see something like "https://www.weather.gov/grr/about". That is your office code.
+Set your office's code here. `KLOT` is Chicago/Romeoville, IL. You can find your office code by going to https://www.weather.gov/ and searching for your location. Once there, click on the "About Us" link on the left side. In the URL you will see something like "https://www.weather.gov/lot/about". That is your office code.
 
 ## Alert Summary
 
-Here, you need to set the callsign of your station. The Alert Summary has a fixed format, as I never got to the point of making it customizable. You also need to set the zones you want alerts for. I have it set as `MIC077`, which is Kalamazoo Co., MI. You *can* set multiple, however it's not recommended and may result in duplicate alerts. `timezoneLong` could be automated, however it's not. Set it as you see fit.
+Here, you need to set the callsign of your station. The Alert Summary has a fixed format, as I never got to the point of making it customizable. You also need to set the zones you want alerts for. I have it set as `INC127`, which is Valparaiso, IN. You *can* set multiple, however it's not recommended and may result in duplicate alerts. `timezoneLong` could be automated, however it's not. Set it as you see fit.
 
 ## Misc. configuration
 
