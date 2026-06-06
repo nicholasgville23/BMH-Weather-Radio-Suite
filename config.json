@@ -1,0 +1,70 @@
+{
+    "ttsSpeed": "100",
+    "endPause": "687",
+    "logLevel": "INFO",
+    "productOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+    ],
+    "produceSingleFile": false,
+    "globalHTTPTimeout": "20",
+    "currentTime": {
+        "timeScript": "The current time is.",
+        "timeZone": "CDT",
+        "dateEnable": false,
+        "dateScript": "Today's date is. "
+    },
+    "Observations": {
+        "mainObsCode": "KVPZ",
+        "regionalObsCodes": [
+            "KGYY",
+            "KLAN",
+            "KLOT",
+            "KJOT"
+        ],
+        "openerList": [],
+        "openers": {},
+        "cityNameDef": {
+            "KVPZ": "Val paraiso",
+            "KGYY": "Gary International Airport",
+            "KLAN": "Lansing Airport",
+            "KLOT": "Chicago Lewis O'Hare Airport",
+            "KJOT": "Joliet Regional Airport"
+        },
+        "dividers": {
+            "KVPZ": "At",
+            "KJOT": "Elsewhere around the area.",
+            "KLOT": "Now here is the observations for around the midwest."
+        }
+    },
+    "Forecast": {
+        "forecastDays": "8",
+        "forecastZone": "INZ011",
+        "forecastPre": "Here is your forecast for Valparaiso Surrounding Communities.",
+        "forecastPost": "Visit us on the web at weather, dot, gov, slash, chicago.",
+        "enableTropicalForecast": false
+    },
+    "HWO": {
+        "office": "LOT",        
+        "preambleEnable": true,
+        "preamble": "Here is the hazardous weather outlook."
+    },
+    "AlertSummary": {
+        "stationID": "W N G 6 89",
+        "alertZones": [
+            "INC089",
+            "INC127"
+        ],
+        "timezoneLong": "Central Daylight Time",
+        "enableRWT": true,
+        "rwtDay": 2,
+        "rwtStartHour": 11,
+        "rwtEndHour": 12,
+        "rwtText": "THE PRECEDING WAS A TEST OF THE NATIONAL WEATHER SERVICE WARNING ALARM TONE. During POTENTIALLY DANGEROUS WEATHER SITUATIONS, SPECIALLY EQUIPPED RECEIVERS ARE AUTOMATICALLY ACTIVATED, TO WARN OF THE IMPENDING Hazard. Tests Of THESE RECEIVERS, BY THIS SYSTEM, ARE NORMALLY CONDUCTED BY THE NATIONAL WEATHER SERVICE, EVERY WEDNESDAY BETWEEN 11 AM AND NOON. When THERE IS THE THREAT OF, OR EXISTING SEVERE WEATHER IN THE AREA On WEDNESDAY, THE TEST IS POSTPONED UNTIL THE NEXT AVAILABLE GOOD WEATHER DAY. The WARNING ALARM, TRANSMITTED OVER NATIONAL WEATHER SERVICE RADIO STATIONS, IN NORTH CENTRAL AND NORTHEAST ILLINOIS, WILL BE ACTIVATED FOR WATCHES AND OR WARNINGS, AFFECTING ALL COUNTIES IN NORTH CENTRAL AND NORTHEAST ILLINOIS, AS WELL AS COUNTIES IN FAR NORTHWEST Indiana. RECEPTION OF THIS BROADCAST AND THE ALARM TONE, WILL VARY AT ANY GIVEN LOCATION. This VARIABILITY, NORMALLY MORE NOTICEABLE AT A DISTANCE FROM A GIVEN TRANSMITTER, WILL OCCUR EVEN THOUGH YOU ARE USING A GOOD QUALITY RECEIVER IN PERFECT WORKING ORDER. This CONCLUDES THE TONE ALARM TEST. We WILL NOW RETURN TO OUR REGULAR PROGRAM."
+    }
+}
