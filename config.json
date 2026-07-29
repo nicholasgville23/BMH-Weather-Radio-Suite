@@ -9,10 +9,13 @@
         4,
         5,
         6,
-        7
+        7,
+        8,
+        9
     ],
     "produceSingleFile": false,
-    "globalHTTPTimeout": "20",
+    "globalHTTPTimeout": "105",
+    "globalHTTPContinuous":true,
     "currentTime": {
         "timeScript": "The current time is.",
         "timeZone": "CDT",
@@ -34,12 +37,16 @@
             "KGYY": "Gary International Airport",
             "KLAN": "Lansing Airport",
             "KLOT": "Chicago Lewis O'Hare Airport",
-            "KJOT": "Joliet Regional Airport"
+            "KJOT": "Joliet Regional Airport",
+            "KRFD": "Rockford Airport",
+            "KMKX": "Milwaukee",
+            "KSPI": "Springfield",
+            "KMSN": "Madison Wisconsin"
         },
         "dividers": {
             "KVPZ": "At",
-            "KJOT": "Elsewhere around the area.",
-            "KLOT": "Now here is the observations for around the midwest."
+            "KLOT": "Elsewhere around the area.",
+            "KJOT": "Now here is the observations for around the midwest."
         }
     },
     "Forecast": {
