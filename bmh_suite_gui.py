@@ -253,6 +253,7 @@ class BMHWeatherRadioSuite:
         self.global_ticker = ttk.Entry(right); self.global_ticker.insert(0, "Simulated BMH Network — no live alert transmission"); self.global_ticker.pack(fill="x")
         row=ttk.Frame(right); row.pack(fill="x", pady=8)
         ttk.Button(row, text="Update Periodic Scroll", command=self._update_ticker).pack(side="left", padx=(0, 5))
+        ttk.Button(row, text="Live NWS Alerts / Forecast", command=self._open_live_nws).pack(side="left", padx=(0, 5))
         ttk.Button(row, text="TRANSMIT (SIM)", command=self._simulate_transmit).pack(side="left")
         ttk.Separator(right).pack(fill="x", pady=10)
         ttk.Label(right, text="Active transmitters (simulated)", style="Subhead.TLabel").pack(anchor="w")
@@ -265,6 +266,21 @@ class BMHWeatherRadioSuite:
         self.active_tx_tree.bind("<Double-1>", self._active_tx_double_click)
         ttk.Button(right, text="Open selected Station Controller", command=self._open_selected_station_controller).pack(anchor="w", pady=5)
         ttk.Label(right, text="This panel never controls a physical transmitter.", style="Danger.TLabel", wraplength=380).pack(anchor="w", pady=(8, 0))
+
+    def _open_live_nws(self):
+        """Open the read-only viewer backed by the real api.weather.gov service."""
+        try:
+            from bmh_live_nws import LiveNWSWindow
+            LiveNWSWindow(self.root, on_insert_reference=self._insert_live_alert_reference)
+            self._set_status("Live NWS viewer opened; official data is read-only and local.")
+        except Exception as exc:
+            messagebox.showerror("Live NWS Viewer", f"Could not open the live NWS viewer: {exc}", parent=self.root)
+
+    def _insert_live_alert_reference(self, reference_text):
+        """Insert official live alert data as a labelled local reference, never as a sent product."""
+        self.tabs.select(self.text_tab)
+        self.editor.insert("insert", reference_text + "\n\n")
+        self._set_status("Inserted live NWS reference copy in local editor. Nothing was dispatched.")
 
     def _build_text_workstation(self):
         outer = ttk.Frame(self.text_tab); outer.pack(fill="both", expand=True)

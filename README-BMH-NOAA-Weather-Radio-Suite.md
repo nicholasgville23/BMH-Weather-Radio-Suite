@@ -26,3 +26,11 @@ noaa_stations_catalog.py is copied from the companion nicholasgville23/noaa-weat
 SIMULATION ONLY. This is not an operational warning system. The code does not transmit radio-frequency energy, create an operational EAS encoder connection, open a network socket at the configured IP/port, send email, post to IEMBOT, or publish to websites/outlets. TRANSMIT, START TX, queue playback, SAME/EAS, and test-alert buttons modify local GUI state or create local preview files only. The 1050 Hz WAV is a basic tone preview, not an authenticated SAME/EAS audio sequence. The polygon canvas is schematic, not live radar or authoritative warning geometry.
 
 The UI language and voice labels are selections/template helpers; this first GUI build does not include licensed SAPI/VoiceText data or a full translation of every control. Existing weather-product generation and audio playback scripts can be integrated in a separate step after their runtime and data dependencies are configured.
+
+## Live NWS data viewer
+
+The dashboard includes **Live NWS Alerts / Forecast**, which retrieves active alerts for Illinois and Indiana from the official api.weather.gov service and can load an official forecast-zone period list (for example, INZ011). The viewer is read-only. It can show alert details, open the official source URL, insert a clearly labelled reference copy into the local text editor, and optionally speak an alert through the computer's local audio output if pyttsx3 is installed.
+
+Run pip install pyttsx3 only if you want local speech. Voice availability depends on the operating system and installed speech engines; the viewer does not claim that a local system voice is the licensed VoiceText Paul voice.
+
+Live data retrieval is real, but this feature does **not** make the suite an authorized public-warning transmitter. It does not connect to RF transmitters, an EAS encoder, email, IEMBOT, websites, or public distribution endpoints. Treat the workstation's generated/reference text as local working material and verify official products at their NWS source.
