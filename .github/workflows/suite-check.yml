@@ -1,0 +1,24 @@
+name: Suite GUI checks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "bmh_suite_gui.py"
+      - "noaa_stations_catalog.py"
+      - "test_bmh_suite_gui.py"
+      - ".github/workflows/suite-check.yml"
+  workflow_dispatch:
+
+jobs:
+  python-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile Python files
+        run: python -m py_compile bmh_suite_gui.py noaa_stations_catalog.py test_bmh_suite_gui.py
+      - name: Run helper tests
+        run: python -m unittest -v test_bmh_suite_gui.py
