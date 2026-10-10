@@ -19,10 +19,12 @@ on:
       - "bmh_suite_gui.py"
       - "bmh_live_nws.py"
       - "bmh_live_observations.py"
+      - "bmh_live_monitor.py"
       - "noaa_stations_catalog.py"
       - "test_bmh_suite_gui.py"
       - "test_bmh_live_nws.py"
       - "test_bmh_live_observations.py"
+      - "test_bmh_live_monitor.py"
       - ".github/workflows/suite-check.yml"
   workflow_dispatch:
 
