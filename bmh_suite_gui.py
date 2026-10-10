@@ -279,7 +279,7 @@ class BMHWeatherRadioSuite:
     def _insert_live_alert_reference(self, reference_text):
         """Insert official live alert data as a labelled local reference, never as a sent product."""
         self.tabs.select(self.text_tab)
-        self.editor.insert("insert", reference_text + "\\n\\n")
+        self.editor.insert("insert", reference_text + "\n\n")
         self._set_status("Inserted live NWS reference copy in local editor. Nothing was dispatched.")
 
     def _build_text_workstation(self):
