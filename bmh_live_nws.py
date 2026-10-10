@@ -36,6 +36,9 @@ def normalize_alert(feature: dict) -> dict:
     props = feature.get("properties") or {}
     identifier = props.get("id") or feature.get("id") or ""
     geocode = props.get("geocode") or {}
+    same_values = geocode.get("SAME", []) or []
+    if isinstance(same_values, str):
+        same_values = [same_values]
     return {
         "id": str(identifier),
         "event": props.get("event") or "Unknown event",
@@ -50,7 +53,7 @@ def normalize_alert(feature: dict) -> dict:
         "expires": props.get("expires") or "",
         "description": props.get("description") or "",
         "instruction": props.get("instruction") or "",
-        "same_codes": ", ".join(geocode.get("SAME", []) or []),
+        "same_codes": ", ".join(same_values),
         "url": str(feature.get("id") or props.get("@id") or ""),
     }
 
@@ -274,7 +277,10 @@ class LiveNWSWindow:
                 if not self.win.winfo_exists():
                     return
                 if not ok:
-                    self.status_var.set(f"{kind.title()} request failed: {payload}")
+                    if kind == "speech":
+                        self.status_var.set(str(payload))
+                    else:
+                        self.status_var.set(f"{kind.title()} request failed: {payload}")
                     continue
                 if kind == "alerts":
                     self._render_alerts(payload)
