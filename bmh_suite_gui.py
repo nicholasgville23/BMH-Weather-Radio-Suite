@@ -254,6 +254,7 @@ class BMHWeatherRadioSuite:
         row=ttk.Frame(right); row.pack(fill="x", pady=8)
         ttk.Button(row, text="Update Periodic Scroll", command=self._update_ticker).pack(side="left", padx=(0, 5))
         ttk.Button(row, text="Live NWS Alerts / Forecast", command=self._open_live_nws).pack(side="left", padx=(0, 5))
+        ttk.Button(row, text="Live Current Observations", command=self._open_live_observations).pack(side="left", padx=(0, 5))
         ttk.Button(row, text="TRANSMIT (SIM)", command=self._simulate_transmit).pack(side="left")
         ttk.Separator(right).pack(fill="x", pady=10)
         ttk.Label(right, text="Active transmitters (simulated)", style="Subhead.TLabel").pack(anchor="w")
@@ -275,6 +276,15 @@ class BMHWeatherRadioSuite:
             self._set_status("Live NWS viewer opened; official data is read-only and local.")
         except Exception as exc:
             messagebox.showerror("Live NWS Viewer", f"Could not open the live NWS viewer: {exc}", parent=self.root)
+
+    def _open_live_observations(self):
+        """Open current observations from the real NWS API in read-only mode."""
+        try:
+            from bmh_live_observations import LiveObservationsWindow
+            LiveObservationsWindow(self.root, default_station="KVPZ")
+            self._set_status("Live NWS observations opened; official data is read-only and local.")
+        except Exception as exc:
+            messagebox.showerror("Live NWS Observations", f"Could not open live observations: {exc}", parent=self.root)
 
     def _insert_live_alert_reference(self, reference_text):
         """Insert official live alert data as a labelled local reference, never as a sent product."""
