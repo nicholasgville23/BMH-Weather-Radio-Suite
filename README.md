@@ -90,4 +90,4 @@ A separate local control-room simulation is available in [README-BMH-NOAA-Weathe
 
     python bmh_suite_gui.py
 
-It includes a KLOT LOTIEM text workstation, simulated BMH network and station controllers, alert queue, cycle-order editor, editable JSON settings, hazard segment builder, schematic polygon tool, and local 1050 Hz tone preview. The GUI is simulation-only and does not send alerts or control transmitters. The companion station catalog is a seed list that includes duplicate call signs; check station records against the official NWS listing before relying on them.
+It includes a KLOT LOTIEM text workstation, simulated BMH network and station controllers, alert queue, cycle-order editor, editable JSON settings, hazard segment builder, schematic polygon tool, local 1050 Hz tone preview, and a live read-only viewer for official NWS alerts and forecast zones. The GUI is simulation-only and does not send alerts or control transmitters. The companion station catalog is a seed list that includes duplicate call signs; check station records against the official NWS listing before relying on them.
