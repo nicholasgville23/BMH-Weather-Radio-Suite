@@ -489,7 +489,16 @@ class BMHWeatherRadioSuite:
         return row or (name,{"callsign":station_id,"station_id":station_id,"city":"Valparaiso" if station_id=="WXK89" else "Gary","state":"Indiana","frequency":"162.400" if station_id=="WXK89" else "162.425","voice":"paul","simulation_profile":True})
 
     def _open_selected_station_controller(self):
-        if hasattr(self,"station_tree") and self.station_tree.selection():self._get_selected_station()
+        selected_tab = self.tabs.select()
+        if selected_tab == str(self.network_tab) and self.network_tx_tree.selection():
+            iid = self.network_tx_tree.selection()[0]
+            self.current_station = self._station_profile("KBB57" if iid == "kbb57" else "WXK89")
+        elif selected_tab == str(self.dashboard_tab) and self.active_tx_tree.selection():
+            iid = self.active_tx_tree.selection()[0]
+            self.current_station = self._station_profile("KBB57" if iid == "sim_kbb57" else "WXK89")
+        elif hasattr(self,"station_tree") and self.station_tree.selection():
+            self._get_selected_station()
+        self._refresh_all()
         self._open_station_controller(self.current_station)
 
     def _open_station_controller(self,station):
@@ -718,8 +727,11 @@ class BMHWeatherRadioSuite:
         messagebox.showinfo("Silent Interrupt","Local simulation state only. No audio transmitter was interrupted.")
 
     def _update_ticker(self):
-        txt=self.network_ticker.get() if hasattr(self,"network_ticker") and self.network_ticker.get() else self.global_ticker.get()
-        self._set_status("Periodic scroll updated (local): "+txt[:100])
+        if self.tabs.select() == str(self.network_tab):
+            txt = self.network_ticker.get()
+        else:
+            txt = self.global_ticker.get()
+        self._set_status("Periodic scroll updated (local): " + txt[:100])
 
     def _simulate_transmit(self):
         if not messagebox.askyesno("Simulation TX","Start a LOCAL transmit simulation only?\n\nNo radio, network socket, EAS encoder, email, IEMBOT, or public outlet will be contacted.",parent=self.root):return
