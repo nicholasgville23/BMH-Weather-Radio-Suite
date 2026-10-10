@@ -71,9 +71,7 @@ def normalize_observation(payload: dict, station_id: str = "") -> dict:
     """Normalize one /observations/latest response into display fields."""
     props = payload.get("properties") or {}
     temp = _number(props.get("temperature"), celsius_to_fahrenheit)
-    dewpoint = _number(props.get(" dewpoint"), celsius_to_fahrenheit)
-    if dewpoint is None:
-        dewpoint = _number(props.get("dewpoint"), celsius_to_fahrenheit)
+    dewpoint = _number(props.get("dewpoint"), celsius_to_fahrenheit)
     wind = _number(props.get("windSpeed"), lambda value: value * MPS_TO_MPH)
     gust = _number(props.get("windGust"), lambda value: value * MPS_TO_MPH)
     pressure = _number(props.get("barometricPressure"), lambda value: value / PA_PER_INHG)
