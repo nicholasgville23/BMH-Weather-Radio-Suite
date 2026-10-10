@@ -21,6 +21,10 @@ On first launch the app creates bmh_suite_config.json in the repository folder. 
 
 noaa_stations_catalog.py is copied from the companion nicholasgville23/noaa-weather-radio-simulator project as a seed catalog. It contains 520 entries spanning all 50 states, but the source data includes duplicate call signs and has not been verified entry-by-entry against current NWS listings. It is not an official station database. Confirm callsign, station ID, frequency, coordinates, FIPS/SAME coverage, and current operational status against the official NWS NWR station listing before using station data for anything beyond simulation: https://www.weather.gov/nwr/station_listing?force_isolation=true. The two local station profiles WXK89 (Valparaiso, 162.400 MHz) and KBB57 (Gary, 162.425 MHz) are included as user-configured simulation profiles.
 
+## Live current observations
+
+The dashboard also includes **Live Current Observations**. It requests the latest station observation from the official `api.weather.gov/stations/{stationId}/observations/latest` endpoint (default station `KVPZ`, editable in the viewer), and displays time, conditions, temperature, dew point, wind, humidity, pressure, visibility, and recent precipitation when reported. This uses real NWS observation data; it is still a read-only data viewer, not a receiver of the station's RF broadcast. No continuous polling is enabled; refresh is manual.
+
 ## Safety and integration boundaries
 
 SIMULATION ONLY. This is not an operational warning system. The code does not transmit radio-frequency energy, create an operational EAS encoder connection, open a network socket at the configured IP/port, send email, post to IEMBOT, or publish to websites/outlets. TRANSMIT, START TX, queue playback, SAME/EAS, and test-alert buttons modify local GUI state or create local preview files only. The 1050 Hz WAV is a basic tone preview, not an authenticated SAME/EAS audio sequence. The polygon canvas is schematic, not live radar or authoritative warning geometry.
