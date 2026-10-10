@@ -82,3 +82,12 @@ If a file was not mentioned in this "README", ***Do Not Touch It***. It is likel
 # Miscellanea
 
 If you encounter an issue with the software, feel free to create an issue. I can't guarantee I will be able to fix everything, which is why this is open source. If it's something you can fix, feel free to create a pull request and it will be reviewed in a timely manner.
+
+
+## Optional Tkinter Suite GUI
+
+A separate local control-room simulation is available in [README-BMH-NOAA-Weather-Radio-Suite.md](README-BMH-NOAA-Weather-Radio-Suite.md). Run it from the repository root with:
+
+    python bmh_suite_gui.py
+
+It includes a KLOT LOTIEM text workstation, simulated BMH network and station controllers, alert queue, cycle-order editor, editable JSON settings, hazard segment builder, schematic polygon tool, and local 1050 Hz tone preview. The GUI is simulation-only and does not send alerts or control transmitters. The companion station catalog is a seed list that includes duplicate call signs; check station records against the official NWS listing before relying on them.
