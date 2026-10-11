@@ -255,6 +255,7 @@ class BMHWeatherRadioSuite:
         ttk.Button(row, text="Update Periodic Scroll", command=self._update_ticker).pack(side="left", padx=(0, 5))
         ttk.Button(row, text="Live NWS Alerts / Forecast", command=self._open_live_nws).pack(side="left", padx=(0, 5))
         ttk.Button(row, text="Live Current Observations", command=self._open_live_observations).pack(side="left", padx=(0, 5))
+        ttk.Button(row, text="Live NWS Auto Monitor", command=self._open_live_monitor).pack(side="left", padx=(0, 5))
         ttk.Button(row, text="TRANSMIT (SIM)", command=self._simulate_transmit).pack(side="left")
         ttk.Separator(right).pack(fill="x", pady=10)
         ttk.Label(right, text="Active transmitters (simulated)", style="Subhead.TLabel").pack(anchor="w")
@@ -267,6 +268,15 @@ class BMHWeatherRadioSuite:
         self.active_tx_tree.bind("<Double-1>", self._active_tx_double_click)
         ttk.Button(right, text="Open selected Station Controller", command=self._open_selected_station_controller).pack(anchor="w", pady=5)
         ttk.Label(right, text="This panel never controls a physical transmitter.", style="Danger.TLabel", wraplength=380).pack(anchor="w", pady=(8, 0))
+
+    def _open_live_monitor(self):
+        """Open the polling live-alert monitor; only official NWS data is read."""
+        try:
+            from bmh_live_monitor import LiveMonitorWindow
+            LiveMonitorWindow(self.root, default_areas="IL,IN")
+            self._set_status("Live NWS auto monitor opened; no RF/EAS/public dispatch.")
+        except Exception as exc:
+            messagebox.showerror("Live NWS Auto Monitor", f"Could not open the live monitor: {exc}", parent=self.root)
 
     def _open_live_nws(self):
         """Open the read-only viewer backed by the real api.weather.gov service."""

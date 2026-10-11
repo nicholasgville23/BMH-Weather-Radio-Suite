@@ -25,6 +25,12 @@ noaa_stations_catalog.py is copied from the companion nicholasgville23/noaa-weat
 
 The dashboard also includes **Live Current Observations**. It requests the latest station observation from the official `api.weather.gov/stations/{stationId}/observations/latest` endpoint (default station `KVPZ`, editable in the viewer), and displays time, conditions, temperature, dew point, wind, humidity, pressure, visibility, and recent precipitation when reported. This uses real NWS observation data; it is still a read-only data viewer, not a receiver of the station's RF broadcast. No continuous polling is enabled; refresh is manual.
 
+## Live NWS auto monitor
+
+The main GUI now includes **Live NWS Auto Monitor**. It reads current active alert products directly from the official `api.weather.gov/alerts/active` endpoint, defaults to Illinois and Indiana, supports a nationwide query with `US`, and sorts events by emergency, warning, watch, advisory, then statement/other. Use **Refresh Now** for a one-time update or **Start Monitoring** to poll at a configurable 60–900 second interval. The optional “Announce new warnings locally” option uses `pyttsx3` on the local computer only; it is off by default, and existing alerts are not announced on the first snapshot. Install `pyttsx3` only if you want local speech.
+
+This feature makes the live alert feed and monitoring workflow real; it does **not** turn the suite into a public-warning transmitter. It never transmits RF, makes operational SAME/EAS sequences, opens the configured network port, sends alerts to other people, or publishes to email/IEMBOT/websites. Always verify the alert against its official NWS source.
+
 ## Safety and integration boundaries
 
 SIMULATION ONLY. This is not an operational warning system. The code does not transmit radio-frequency energy, create an operational EAS encoder connection, open a network socket at the configured IP/port, send email, post to IEMBOT, or publish to websites/outlets. TRANSMIT, START TX, queue playback, SAME/EAS, and test-alert buttons modify local GUI state or create local preview files only. The 1050 Hz WAV is a basic tone preview, not an authenticated SAME/EAS audio sequence. The polygon canvas is schematic, not live radar or authoritative warning geometry.
